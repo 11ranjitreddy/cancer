@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancer Awareness & Support</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { 
+      background: url("https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1350&q=80") center/cover; 
+      height: 55vh; display: flex; align-items: center; justify-content: center; 
+      color: white; text-shadow: 0 2px 10px black; 
+    }
+    .container { padding: 20px; max-width: 900px; margin: auto; }
+    h1 { text-align: center; }
+    form { display: flex; flex-direction: column; gap: 10px; }
+    input, textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+    }
+    button {
+      padding: 10px; border: none; border-radius: 5px; 
+      background: #d81b60; color: white; cursor: pointer;
+    }
+    .quotes-box {
+      padding: 15px; background: #f3e5f5; border-radius: 8px; margin-top: 20px;
+    }
+    @media(max-width:600px){
+      header { height: 40vh; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Cancer Awareness & Support</h1>
+</header>
+
+<div class="container">
+  <h2>Get Involved • Support • Raise Awareness</h2>
+  <p>Together, we can spread hope, strength, and awareness to fight cancer.</p>
+
+  <h3>Contact Us</h3>
+  <form>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message" rows="4" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h3>Motivational Quote</h3>
+  <div class="quotes-box" id="quote">Loading quote...</div>
+</div>
+
+<script>
+  async function loadQuote() {
+    const res = await fetch("https://api.quotable.io/random");
+    const data = await res.json();
+    document.getElementById("quote").innerText = `"${data.content}" — ${data.author}`;
+  }
+  loadQuote();
+</script>
+
+</body>
+</html>
